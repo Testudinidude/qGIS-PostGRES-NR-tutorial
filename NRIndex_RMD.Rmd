@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+author: "Jennifer A. Hillmer and John E. Reinier (formatted as a markdown by Nathan W. Byer)"
+date: "6/28/2022"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding)})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+The following document is based on notes taken by Jennifer A. Hillmer of Cleveland Metroparks during John Reinier's March 23, 2022 GIS workshop. Although originally recorded in OneNote, Nathan W. Byer re-formatted these notes as an R Markdown file from late May-early June 2022. **These notes are intended to be part of a living document - so recommendations and suggestions are welcome!**
+
+# Working with qGIS
+
+GIS layers can be found in multiple location: 
+
+ CM share drives (wcsc-srv-01\Groups\NaturalResources\GIS_NR_layers\) 
+
+GIS Aerials drive (GIS Imagery (W:\ ) [Need details on how to m ap or access this drive] 
+
+Request permission from ITS for access to these folders – interns and seasonal employees do not have access unless specifcally requested by their supervisors) 
+
+ 
+
+PostGIS layers in NR_monitoring database schema, including cm_base_layers and sensitivity 
+
+Local (WC server) shapefiles, particularly contours. (These are shapefiles, not database tables.) 
+
+You may have your own local project layers. Remember, these are generally not available to other users unless you ask John or Nathan to upload them for you.  
+
+Some background layers, such as aerial photos (raster data) or general topographic maps, can be brought in from external sources. These might not be "leaf-off" aerial photos, if that matters to you. 
+
+ 
