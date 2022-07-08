@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Working with GIS layers and "
 author: "Jennifer A. Hillmer and John E. Reinier (formatted as a markdown by Nathan W. Byer)"
 date: "6/28/2022"
 output: 
@@ -10,7 +10,8 @@ output:
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
- encoding=encoding)})
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 ---
 
 ```{r setup, include=FALSE}
@@ -22,22 +23,139 @@ The following document is based on notes taken by Jennifer A. Hillmer of Clevela
 
 # Working with qGIS
 
-GIS layers can be found in multiple location: 
+* When we talk about **Geographic Information System** software, one often thinks about Esri's ArcGIS family of applications. Although ArcGIS is certainly the most popular GIS platform, it is by no means the cheapest. 
+* That is where **quantum GIS (QGIS) ** comes in. QGIS is an open source, free GIS platform that has many of the same utilities as other, more costly platforms. 
+* Below, we will provide some guidance on how to use QGIS for basic GIS operations.
 
- CM share drives (wcsc-srv-01\Groups\NaturalResources\GIS_NR_layers\) 
+## Where do I find GIS data?
 
-GIS Aerials drive (GIS Imagery (W:\ ) [Need details on how to m ap or access this drive] 
+* Before diving into GIS applications more fully, you will need access to GIS *layers* - basically, spatially-referenced datasets.
+* These layers are grouped into two broad classes:
+** *Vector* layers - represented by points, lines, and polygons (.shp, .gpx, .kml)
+** *Raster* layers - represented by grids of pixels (.tif, .asc, .rst as common extensions)
+* Here at Cleveland Metroparks, GIS layers can be found in multiple locations: 
 
-Request permission from ITS for access to these folders – interns and seasonal employees do not have access unless specifcally requested by their supervisors) 
+1. Cleveland Metroparks share drives (wcsc-srv-01\Groups\NaturalResources\GIS_NR_layers\) 
+
+2. GIS Aerials drive (GIS Imagery (W:\))
+
+3. Aerials maintained by GIS staff (\\cmac-fs02\GIS\IMAGERY\AERIALS): this location can be mapped to whatever drive you would live, but you will need permission from ITS to access these folders.
+
+4. PostGIS layers in the NR_monitoring database schema, including cm_base_layers and sensitivity 
+
+5. Local (WC server) shapefiles, particularly contours. (These are shapefiles, not database tables.) 
+
+6. You may have your own local project layers. Remember, these are generally not available to other users unless you ask John or Nathan to upload them for you.  
+7. Some background layers, such as aerial photos (raster data) or general topographic maps, can be brought in from external sources. These might not be "leaf-off" aerial photos, if that matters to you. 
+
+<div id="Where to find data" class="alert alert-success">
+<strong> Where to find GIS data </strong>
+</div>
+
+## How do I connect to the database? 
+
+If your project has layers from the database, you will enter your credentials at some point. 
+
+
+2 ways to add background layers to your project. 
 
  
 
-PostGIS layers in NR_monitoring database schema, including cm_base_layers and sensitivity 
+Option #1 (preferred) - Add from browser window 
 
-Local (WC server) shapefiles, particularly contours. (These are shapefiles, not database tables.) 
+If your browser window is not visible, go to View  > Panels > Browser to turn it on 
 
-You may have your own local project layers. Remember, these are generally not available to other users unless you ask John or Nathan to upload them for you.  
+ 
 
-Some background layers, such as aerial photos (raster data) or general topographic maps, can be brought in from external sources. These might not be "leaf-off" aerial photos, if that matters to you. 
+Next: Open your PostGIS connection 
 
+Click the dropdown and you should have a connection that says something like "NR_monitoring" 
+
+Click the NR_monitoring dropdown and you will see a list of schema (your list will likely be shorter than what is shown below.  cm_base_layers is an important one and will include many useful background layers . 
+
+
+When you drop down a schema you'll see all the layers available to you: 
+
+You can then right-click to add a layer to the project OR drag drop it into your layer list: 
+
+
+Layers that I have created default styling for should be styled automatically when you load them.  If there is no default style, it will be styled randomly and you'll have to modify the styling however you wish.  The "index_of_nr_value" and "natural_features" (point layer) are two examples of layers that should have default styling.  If they do not load with nice styling (I.e., categorized with different colors), please let John R. know.   
+
+ 
+
+ 
+
+ 
+
+Option #2 (a little clunkier) - Add from "Layer" tab 
+
+ 
+
+ 
+
+Click the "Layer" tab at the top of your project.  Hover over "Add Layer" and then click "Add PostGIS Layers..." 
+
+Next you'll see a PostgreSQL connection window pop up.  Make sure your connection says something like "NR_monitoring" and then click "Connect."  Just like with Option #1, you'll then see several schemas that contain layers 
+
+Dropping down a schema will show layers available to you within that schema 
+
+This is where Option #2 gets a little tricky.  Ideally, you would highlight any layer you want to add by clicking it once, and then you would click "Add" in the lower right of the window. 
+
+BUT...this option is more sensitive to how individual layer properties are set, which can lead to frustrating errors when trying to load layers.  This is why I recommend using Option #1.  If you prefer Option #2 for some reason, and you get errors, call John R. for assistance. 
+
+Adding and Using Quick Map Services (QMS)  
+
+QMS provides access to externally-maintained background layers that many users will find helpful.  It is particularly useful as an easy source of high-res aerial photos that can be used for map-making and general viewing.  
+
+QMS icons are shown below.  The QMS search feature is important and is show in the middle. 
+
+If you don't see the QMS icons in your toolbars, you'll need to install the QMS plugin.  First make sure your Web Toolbar is visible by clicking the "View" tab at the top of your project, hovering over "Toolbars", and then making sure that "Web Toolbars" is underlined. 
+
+Next, click the "Plugins" tab and select "Manage and Install Plugins" 
+ 
+You'll then see the Plugin management window pop up 
+
+On the left you see the list of all plugins available for your QGIS, both installed and available for download. Some plugins come with your 
+QGIS installation while most of them are made available via the plugin repositories. 
+
+You can temporarily enable or disable a plugin. To enable or disable a plugin, click its checkbox or double click its name... 
+Plugins showing in red are not loaded because there is a problem. They are also listed on the hvalid' tab. Click on the plugin name to see 
+more details, or to reinstall or uninstall this plugin.
+
+In the Search Bar, type "QMS" 
+
+You should then see an "Install" option at the bottom right of the Plugins window.  Click "Install" 
+
+ 
+
+Once installed, and assuming your Web Toolbar is turned on (as described above), you should see the QMS icons in your toolbar. 
+
+By default, the list of available basemaps is quite limited. Thus, we recommend installing the contributed map pack. You can do so by navigating to the settings for the QMS plugin (Web-->QuickMapServices-->Settings) 
+
+Once you are there, You should see tabs labelled "General", "Tiles", "Add/Edit/Remove", "Visibility", and "More Services". Navigate to "More Services" and click on "Get Contributed Pack".  
+
+You can now select from a number of imagery layers for your mapping needs. There are two ways to do this. First, you can click on the QMS icon with the magnifying glass: 
+
+And use this to search for your desired basemaps. The most useful and familiar will likely be the ESRI products, such as the ESRI satellite layer: 
+
+You can also use the drop-down menu under Web --> QuickMapServices to browse available images.
+ 
+
+Contours 
+
+ 
+
+Getting current, complete (esp. 2 foot)  contours is still a work in progress.  At present, the best single source for contours is probably the "contours_simp_3734" shapefile found at \\wcsc-srv-01\GROUPS\NaturalResources\GIS_NR_layers\shapefiles\contours_simp_3734.shp  
+
+ 
+
+This layer provides 2 ft. contours within park boundaries (does not include newer acquisitions) and 10 ft. contours for areas outside the park (adjacent counties). 
+
+ 
+
+ 
+
+ 
+
+ 
  
