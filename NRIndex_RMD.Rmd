@@ -1,5 +1,5 @@
 ---
-title: "Introduction to qGIS, mapping, and the NR Index"
+title: "Introduction to QGIS, mapping, and the NR Index"
 author: "Jennifer A. Hillmer and John E. Reinier (formatted as a markdown by Nathan W. Byer)"
 date: "6/28/2022"
 output: 
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The following document is based on notes taken by Jennifer A. Hillmer of Cleveland Metroparks during John Reinier's March 23, 2022 GIS workshop. Although originally recorded in OneNote, Nathan W. Byer re-formatted these notes as an R Markdown file from late May-early June 2022. **These notes are intended to be part of a living document - so recommendations and suggestions are welcome!**
 
-# Working with qGIS and PostGIS
+# Working with QGIS and PostGIS
 
 * When we talk about **Geographic Information System** software, one often thinks about Esri's ArcGIS family of applications. Although ArcGIS is certainly the most popular GIS platform, it is by no means the cheapest. 
 * That is where **quantum GIS (QGIS) ** comes in. QGIS is an open source, free GIS platform that has many of the same utilities as other, more costly platforms. 
@@ -41,7 +41,7 @@ The following document is based on notes taken by Jennifer A. Hillmer of Clevela
 
 3. Aerials maintained by GIS staff (\\cmac-fs02\GIS\IMAGERY\AERIALS): this location can be mapped to whatever drive you would live, but you will need permission from ITS to access these folders.
 
-4. PostGIS layers in the NR_monitoring database schema, including cm_base_layers and sensitivity 
+4. PostGIS layers in the NR_monitoring database schemas, including cm_base_layers and sensitivity 
 
 5. Local (WC server) shapefiles, particularly contours. (These are shapefiles, not database tables.) 
 
@@ -51,7 +51,7 @@ The following document is based on notes taken by Jennifer A. Hillmer of Clevela
 
 ## How do I connect to the database? 
 
-Prior to this tutorial, please ask either John or Nathan to make sure your qGIS instance has the proper connection settings for the PostGIS database. This will involve right-clicking on the PostGIS icon ( ![](C:/Users\nwb\Documents\GitHub_R\qGIS-PostGRES-NR-tutorial\images\part1\postgis.png) ), creating a new connection, and adding in some relevant information about the database. You will also need to set up a qgis-specific master authentication password. Keep in mind that this is going to be specific to **your current installation of qGIS** - it will not carry forward to different machines, unlike your PostGIS login information! 
+Prior to this tutorial, please ask either John or Nathan to make sure your QGIS instance has the proper connection settings for the PostGIS database. This will involve right-clicking on the PostGIS icon ( ![](C:/Users\nwb\Documents\GitHub_R\QGIS-PostGRES-NR-tutorial\images\part1\postgis.png) ), creating a new connection, and adding in some relevant information about the database. You will also need to set up a QGIS-specific master authentication password. Keep in mind that this is going to be specific to **your current installation of QGIS** - it will not carry forward to different machines, unlike your PostGIS login information! 
 
 You should ultimately wind up with a similar setup for this new connection to this:
 
@@ -102,7 +102,7 @@ knitr::include_graphics("./images/part1/image4.png")
 
 ```
 
-3. Click the NR_monitoring dropdown and you will see a list of schema (your list will likely be shorter than what is shown below).  cm_base_layers is an important one and will include many useful background layers. 
+3. Click the NR_monitoring dropdown and you will see a list of schemas (your list will likely be shorter than what is shown below).  cm_base_layers is an important one and will include many useful background layers. 
 
 ```{r, echo = FALSE,fig.align="center",out.width="50%"}
 
@@ -174,11 +174,11 @@ Unfortunately, this option is more sensitive to how individual layer properties 
 
 ## Are there any easy ways to get in GIS imagery?
 
-* Quick Map Services (QMS) is a qGIS plugin that provides access to externally-maintained background layers that many users will find helpful.  It is particularly useful as an easy source of high-resolution aerial photos that can be used for map-making and general viewing.  
+* Quick Map Services (QMS) is a QGIS plugin that provides access to externally-maintained background layers that many users will find helpful.  It is particularly useful as an easy source of high-resolution aerial photos that can be used for map-making and general viewing.  
 
 ### If you have QMS installed: 
 
-You should be able to just QMS icons are shown below.  The QMS search feature is important and is show in the middle. 
+You should see QMS buttons, similar to those shown below.  The QMS search feature is important and is show in the middle. 
 
 ```{r, echo = FALSE,fig.align="center",out.width="50%"}
 
@@ -283,7 +283,7 @@ This layer provides 2 ft. contours within park boundaries (does not include newe
 
 # How do I customize my GIS maps and layers?
 
-* Once you have your layers in qGIS, you likely will want to customize the appearance of these layers as well - and create a tidy, interpretable map to summarize your efforts.
+* Once you have your layers in QGIS, you likely will want to customize the appearance of these layers as well - and create a tidy, interpretable map to summarize your efforts.
 
 * If styles are set as default in the database, the layers will load with the set style. Otherwise, the styling is random and uncategorized. The example below shows the headwater stream assessment point layer with the default styling saved in the database. 
 
@@ -443,7 +443,7 @@ knitr::include_graphics("./images/part2/image16.png")
 
 * There are several layers summarizing the NR Index metrics. Much information is present in the attribute tables. (Select a layer, right click, Open Attribute Table. Refer to the NR Index User Guide developed by John R. for explanations of the data and the summary information.   
 
-* The most important and useful layers for conservation planning are in two schema in the database, "cm_base_layers" and "sensitivity": 
+* The most important and useful layers for conservation planning are in two schemas in the database, "cm_base_layers" and "sensitivity": 
 
 ```{r, echo = FALSE,fig.align="center",out.width="50%"}
 
@@ -453,7 +453,7 @@ knitr::include_graphics("./images/part3/image1.png")
 
 The most broadly useful layers within the cm_base_layers schema are: 
 
-1. "natural_features":
+1. **natural_features**
 * There are two layers called "natural_features".  One is a point layer and the other is a polygon layer.  The point layer contains most of the features. 
 * These layers include location of natural feature observations (mostly species observations), their local, regional, state, and global conservation status and the type of record (Fulcrum record, specimen record, and so on). 
 
@@ -471,11 +471,11 @@ knitr::include_graphics("./images/part3/image3.png")
 
 ```
 
-2. special_conservation_interest areas
+2. **special_conservation_interest areas**
 * Commonly referred to as our "blue blobs", and should load with default styling that resemble blue blobs (or circles).These are buffered polygons around natural features of high conservation interest/concern.
 * Buffers are 100 ft. radius 
-* No specific information provided about what the feature is.
-* This information can be accessed by loading the "natural_features" layer. 
+* No specific information provided about what the feature is by default.
+  + this information can be accessed by loading the "natural_features" layer. 
 * Idea behind this layer was to show general areas that support sensitive/rare features. 
 * For use by non-NR staff when planning development/management activities (e.g., trails).
 
@@ -493,7 +493,7 @@ knitr::include_graphics("./images/part3/image5.png")
 
 ```
 
-3. index_of_nr_value 
+3. **index_of_nr_value** 
 * Currently three versions in the cm_base_layers schema, but the most useful is index_of_nr_value_nested_mean_clipped_cm.
   + Limits coverage to within park boundaries.
   + Generally a cleaner way of viewing the layer 
@@ -506,7 +506,7 @@ knitr::include_graphics("./images/part3/image5.png")
 <div class="alert alert-success">
 <strong>Summary:</strong> After this tutorial, you should be able to:
 
-1. find layers to load into qGIS
+1. find layers to load into QGIS
 
 2. load layer styles or make your own
 
@@ -514,7 +514,7 @@ knitr::include_graphics("./images/part3/image5.png")
 
 4. explore the NR index layers.
 
-If you have any questions with qGIS or the NR index layers, please let John R. or Nathan B. know!
+If you have any questions with QGIS or the NR index layers, please let John R. or Nathan B. know!
 
 Full slides from John R.'s presentation can be accessed here: \\wcsc-srv-01\GROUPS\NaturalResources\R_FILES\Presentations\GIS Workshop 2022\NR_staff_data_overview_2022.pdf.
 </div>
