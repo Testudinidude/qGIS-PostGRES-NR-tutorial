@@ -39,7 +39,7 @@ The following document is based on notes taken by Jennifer A. Hillmer of Clevela
 
 2. GIS Aerials drive (GIS Imagery (W:\))
 
-3. Aerials maintained by GIS staff (\\cmac-fs02\GIS\IMAGERY\AERIALS): this location can be mapped to whatever drive you would live, but you will need permission from ITS to access these folders.
+3. Aerials maintained by GIS staff (\\cmac-fs02\GIS\IMAGERY\AERIALS): this location can be mapped to whatever drive you would like, but you will need permission from ITS to access these folders.
 
 4. PostGIS layers in the NR_monitoring database schemas, including cm_base_layers and sensitivity 
 
@@ -56,7 +56,7 @@ Prior to this tutorial, please ask either John or Nathan to make sure your QGIS 
 You should ultimately wind up with a similar setup for this new connection to this:
 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/NRlogin.png")
 
@@ -67,7 +67,7 @@ You should now be able to access all layers in the NR_monitoring database.
 
 If you were to save your current project - and that project has layers from the database - when you boot back up, you may need to re-enter your credentials. This will likely look like the following popup box:
 
-```{r, echo = FALSE,warning=FALSE,message=FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,warning=FALSE,message=FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image1.png")
 
@@ -82,7 +82,7 @@ There are 2 ways to add background layers to your project.
 
 1. If your browser window is not visible, go to View  > Panels > Browser to turn it on. This will be an easy way to view background layers available to your project.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image2.png")
 
@@ -91,7 +91,7 @@ knitr::include_graphics("./images/part1/image2.png")
 
 2. Open your PostGIS connection . Click the dropdown and you should have a connection that says something like "NR_monitoring".
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image3.png")
 
@@ -104,7 +104,7 @@ knitr::include_graphics("./images/part1/image4.png")
 
 3. Click the NR_monitoring dropdown and you will see a list of schemas (your list will likely be shorter than what is shown below).  cm_base_layers is an important one and will include many useful background layers. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image5.png")
 
@@ -113,14 +113,14 @@ knitr::include_graphics("./images/part1/image5.png")
 
 4. When you drop down a schema you'll see all the layers available to you: 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image6.png")
 
 ```
 5. You can then right-click to add a layer to the project OR drag drop it into your layer list: 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image7.png")
 
@@ -137,7 +137,7 @@ knitr::include_graphics("./images/part1/image7.png")
 1. Click the "Layer" tab at the top of your project.  Hover over "Add Layer" and then click "Add PostGIS Layers..." 
 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%",}
 
 knitr::include_graphics("./images/part1/image8.png")
 
@@ -146,41 +146,41 @@ knitr::include_graphics("./images/part1/image8.png")
 
 2. Next you'll see a PostgreSQL connection window pop up.  Make sure your connection says something like "NR_monitoring" and then click "Connect."  Just like with Option #1, you'll then see several schemas that contain layers:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
-knitr::include_graphics("./images/part1/image9.png")
+knitr::include_graphics("./images/part1/image9_crop.png")
 
 ```
 
 
 3. Dropping down a schema will show layers available to you within that schema:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
-knitr::include_graphics("./images/part1/image10.png")
+knitr::include_graphics("./images/part1/image10_crop.png")
 
 ```
 
 
 4. This is where Option #2 gets a little tricky.  Ideally, you would highlight any layer you want to add by clicking it once, and then you would click "Add" in the lower right of the window: 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
-knitr::include_graphics("./images/part1/image11.png")
+knitr::include_graphics("./images/part1/image11_crop.png")
 
 ```
 
 Unfortunately, this option is more sensitive to how individual layer properties are set, which can lead to frustrating errors when trying to load layers.  This is why we recommend using Option #1.  If you prefer Option #2 for some reason, and you get errors, call John R. for assistance. 
 
-## Are there any easy ways to get in GIS imagery?
+## Are there any easy ways to acquire GIS imagery?
 
 * Quick Map Services (QMS) is a QGIS plugin that provides access to externally-maintained background layers that many users will find helpful.  It is particularly useful as an easy source of high-resolution aerial photos that can be used for map-making and general viewing.  
 
 ### If you have QMS installed: 
 
-You should see QMS buttons, similar to those shown below.  The QMS search feature is important and is show in the middle. 
+You should see QMS buttons, similar to those shown below.  The QMS search feature is important and is shown in the middle. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image12.png")
 
@@ -193,7 +193,7 @@ knitr::include_graphics("./images/part1/image12.png")
 
 1. First make sure your Web Toolbar is visible by clicking the "View" tab at the top of your project, hovering over "Toolbars", and then making sure that "Web Toolbars" is underlined. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image13.png")
 
@@ -203,7 +203,7 @@ knitr::include_graphics("./images/part1/image13.png")
 2. Next, click the "Plugins" tab and select "Manage and Install Plugins":
 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image14.png")
 
@@ -212,7 +212,7 @@ knitr::include_graphics("./images/part1/image14.png")
  
 3. You'll then see the Plugin management window pop up:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image15.png")
 
@@ -228,7 +228,7 @@ You can temporarily enable or disable a plugin. To enable or disable a plugin, c
 
 4. In the Search Bar, type "QMS" :
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image16.png")
 
@@ -241,7 +241,7 @@ knitr::include_graphics("./images/part1/image16.png")
 
 7. By default, the list of available basemaps is quite limited. Thus, we recommend installing the contributed map pack. You can do so by navigating to the settings for the QMS plugin (Web-->QuickMapServices-->Settings) 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image17.png")
 
@@ -249,7 +249,7 @@ knitr::include_graphics("./images/part1/image17.png")
 
 8. Once you are there, You should see tabs labelled "General", "Tiles", "Add/Edit/Remove", "Visibility", and "More Services". Navigate to "More Services" and click on "Get Contributed Pack".  
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image18.png")
 
@@ -258,7 +258,7 @@ knitr::include_graphics("./images/part1/image18.png")
 
 9. You can now select from a number of imagery layers for your mapping needs. There are two ways to do this. First, you can click on the QMS icon with the magnifying glass and use this to search for your desired basemaps. The most useful and familiar will likely be the ESRI products, such as the ESRI satellite layer: 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image19.png")
 
@@ -267,7 +267,7 @@ knitr::include_graphics("./images/part1/image19.png")
 
 10. You can also use the drop-down menu under Web --> QuickMapServices to browse available images.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part1/image20.png")
 
@@ -287,7 +287,7 @@ This layer provides 2 ft. contours within park boundaries (does not include newe
 
 * If styles are set as default in the database, the layers will load with the set style. Otherwise, the styling is random and uncategorized. The example below shows the headwater stream assessment point layer with the default styling saved in the database. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image1.png")
 
@@ -297,7 +297,7 @@ knitr::include_graphics("./images/part2/image1.png")
 
 1. Double (or right) click to get to Layer Properties:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image2.png")
 
@@ -305,7 +305,7 @@ knitr::include_graphics("./images/part2/image2.png")
 
 2. Go to Styles > Load Style...:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image3.png")
 
@@ -313,7 +313,7 @@ knitr::include_graphics("./images/part2/image3.png")
 
 3. Select "From Database (postgres). You will then see styles specifically associated with the layer and then other styles stored in the database. Some of these are just draft or project-specific styles that may not be useful.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image4.png")
 
@@ -323,7 +323,7 @@ knitr::include_graphics("./images/part2/image4.png")
 
 1. Go to Layer Properties (as described above) and click "Symbology".
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image5.png")
 
@@ -337,7 +337,7 @@ knitr::include_graphics("./images/part2/image5.png")
  
 2. Once you have a style that you like, custom styles that you prefer to use for certain layers can also be saved as QGIS style files (not in the database).  This is a good option for most users.  Once you have styled a layer, you can go back to Layer Properties > Style, and then choose "Save Style". **As a quick note, we are currently asking that users avoid setting styles as a default in the database. It is easiest for John R. to manage default stylings.**
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image6.png")
 
@@ -345,7 +345,7 @@ knitr::include_graphics("./images/part2/image6.png")
 
 3. The Save Layer Style window will pop up.  Make sure that "As QGIS QML style file" is selected in the dropdown, then you can name your style and choose a file location to save it at. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image7.png")
 
@@ -353,7 +353,7 @@ knitr::include_graphics("./images/part2/image7.png")
 
 4. To load this style in other projects, go to Layer Properties > Style > Load Style (like described above for styles stored in the database), and then choose "From File" in the dropdown.  You'll then navigate to the location where the style file is stored. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image8.png")
 
@@ -363,7 +363,7 @@ knitr::include_graphics("./images/part2/image8.png")
 
 1. To create a new map, go to  Project > New Print Layout.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image9.png")
 
@@ -371,7 +371,7 @@ knitr::include_graphics("./images/part2/image9.png")
 
 2. The map composer window should then open. Many useful tools for editing maps can be found on the left side of the composer window. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image10.png")
 
@@ -379,7 +379,7 @@ knitr::include_graphics("./images/part2/image10.png")
 
 3. To add a map to the blank workspace, click the Add Map icon in the toolbar on the left then click and drag in the workspace.  
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image11.png")
 
@@ -387,7 +387,7 @@ knitr::include_graphics("./images/part2/image11.png")
 
 4. Adjust the scale of the map using either the pan tool or in the Item Properties on the right side of the window.  Many additional options for editing map items can be found under Item Properties.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image12.png")
 
@@ -397,7 +397,7 @@ knitr::include_graphics("./images/part2/image12.png")
 
 Once added, all of these items can be customized using the Item Properties options. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image13.png")
 
@@ -409,7 +409,7 @@ knitr::include_graphics("./images/part2/image13.png")
 
 2. To access the templates, go to Project > Layout Manager.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image14.png")
 
@@ -417,7 +417,7 @@ knitr::include_graphics("./images/part2/image14.png")
 
 3. In the Layout Manager window, choose "Specific" in the dropdown menu:
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image15.png")
 
@@ -425,7 +425,7 @@ knitr::include_graphics("./images/part2/image15.png")
 
 4. Navigate to the location of the template and then click "Create…"
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part2/image16.png")
 
@@ -445,7 +445,7 @@ knitr::include_graphics("./images/part2/image16.png")
 
 * The most important and useful layers for conservation planning are in two schemas in the database, "cm_base_layers" and "sensitivity": 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part3/image1.png")
 
@@ -457,7 +457,7 @@ The most broadly useful layers within the cm_base_layers schema are:
 * There are two layers called "natural_features".  One is a point layer and the other is a polygon layer.  The point layer contains most of the features. 
 * These layers include location of natural feature observations (mostly species observations), their local, regional, state, and global conservation status and the type of record (Fulcrum record, specimen record, and so on). 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part3/image2.png")
 
@@ -465,7 +465,7 @@ knitr::include_graphics("./images/part3/image2.png")
 
 * The natural features point and polygon layers should load with default styling.  Labels showing the common name and scientific name will appear after zooming in far enough. 
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part3/image3.png")
 
@@ -479,7 +479,7 @@ knitr::include_graphics("./images/part3/image3.png")
 * Idea behind this layer was to show general areas that support sensitive/rare features. 
 * For use by non-NR staff when planning development/management activities (e.g., trails).
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part3/image4.png")
 
@@ -487,7 +487,7 @@ knitr::include_graphics("./images/part3/image4.png")
 
 * Example below is of special_conservation_interest areas with natural features loaded on top.
 
-```{r, echo = FALSE,fig.align="center",out.width="50%"}
+```{r, echo = FALSE,fig.align="center",out.width="75%"}
 
 knitr::include_graphics("./images/part3/image5.png")
 
